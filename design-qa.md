@@ -93,6 +93,14 @@ fallback.
    missing link and uses its own information pattern. Verified at 1997 x 1255
    and 390 x 844 in `qa-problem-evidence-fragments-wide.png` and
    `qa-problem-evidence-fragments-mobile.png`.
+8. Reworked section `09` as a scroll-composed perspective wall. Added a
+   context-to-decision-to-evidence continuity rail, directional card entrances,
+   a moving typographic backdrop, a two-field paper/powder background, and
+   card-specific hover lift, color, shadow, quote, avatar, and trace responses.
+   Reserved motion clearance prevents the disclosure from colliding with cards.
+   Verified at 1997 x 1255 and 390 x 844 in
+   `qa-perspectives-motion-desktop.png` and
+   `qa-perspectives-motion-mobile.png`.
 
 ## Remaining Differences
 

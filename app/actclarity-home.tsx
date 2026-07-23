@@ -186,6 +186,7 @@ const testimonials = [
     organisation: "European financial services group",
     initials: "HG",
     tone: "blue",
+    trail: ["Product context", "Legal reasoning", "Evidence"],
   },
   {
     quote:
@@ -194,6 +195,7 @@ const testimonials = [
     organisation: "Enterprise software company",
     initials: "PR",
     tone: "mint",
+    trail: ["Accountable owner", "Next decision", "Required proof"],
   },
   {
     quote:
@@ -202,6 +204,7 @@ const testimonials = [
     organisation: "Regulated technology business",
     initials: "LC",
     tone: "peach",
+    trail: ["System change", "Team review", "Current record"],
   },
 ];
 
@@ -719,14 +722,63 @@ export function ActClarityHome() {
           },
         });
 
-        gsap.from(".testimonial-card", {
+        gsap.from(".testimonial-heading > *", {
           y: 36,
           opacity: 0,
-          rotate: (index) => (index % 2 ? 0.8 : -0.8),
+          stagger: 0.08,
+          scrollTrigger: {
+            trigger: ".testimonial-section",
+            start: "top 82%",
+            end: "top 48%",
+            scrub: 0.8,
+          },
+        });
+
+        gsap.from(".continuity-rail-line span", {
+          scaleX: 0,
+          transformOrigin: "left center",
+          scrollTrigger: {
+            trigger: ".continuity-rail",
+            start: "top 82%",
+            end: "top 46%",
+            scrub: 1,
+          },
+        });
+
+        gsap.from(".continuity-node", {
+          y: 16,
+          opacity: 0,
           stagger: 0.12,
           scrollTrigger: {
+            trigger: ".continuity-rail",
+            start: "top 74%",
+            end: "top 42%",
+            scrub: 0.8,
+          },
+        });
+
+        gsap.from(".testimonial-card", {
+          x: (index) => [-70, 0, 70][index] ?? 0,
+          y: (index) => [82, 34, 92][index] ?? 50,
+          opacity: 0,
+          rotate: (index) => [-1.4, 0.8, 1.2][index] ?? 0,
+          stagger: 0.08,
+          scrollTrigger: {
             trigger: ".testimonial-grid",
-            start: "top 78%",
+            start: "top 88%",
+            end: "top 38%",
+            scrub: 1,
+          },
+        });
+
+        gsap.to(".testimonial-backdrop-mark", {
+          yPercent: -18,
+          ease: "none",
+          scrollTrigger: {
+            trigger: ".testimonial-section",
+            start: "top bottom",
+            end: "bottom top",
+            scrub: true,
           },
         });
 
@@ -1264,6 +1316,9 @@ export function ActClarityHome() {
       </section>
 
       <section className="testimonial-section" aria-labelledby="voices-heading">
+        <span className="testimonial-backdrop-mark" aria-hidden="true">
+          CONTINUITY
+        </span>
         <div className="testimonial-heading">
           <SectionLabel number="09">Design-partner perspectives</SectionLabel>
           <h2 id="voices-heading">
@@ -1274,6 +1329,18 @@ export function ActClarityHome() {
             European legal, risk, product, and governance teams.
           </p>
         </div>
+        <div className="continuity-rail" aria-hidden="true">
+          <div className="continuity-rail-line">
+            <span />
+          </div>
+          {["Context", "Decision", "Evidence"].map((label, index) => (
+            <div className="continuity-node" key={label}>
+              <span>0{index + 1}</span>
+              <strong>{label}</strong>
+            </div>
+          ))}
+          <p>One governance story, kept intact as the system changes.</p>
+        </div>
         <div className="testimonial-grid">
           {testimonials.map((testimonial, index) => (
             <figure className={`testimonial-card ${testimonial.tone}`} key={testimonial.role}>
@@ -1281,6 +1348,16 @@ export function ActClarityHome() {
                 “
               </span>
               <blockquote>{testimonial.quote}</blockquote>
+              <div className="perspective-chain" aria-label="Perspective themes">
+                {testimonial.trail.map((item, trailIndex) => (
+                  <span key={item}>
+                    {item}
+                    {trailIndex < testimonial.trail.length - 1 ? (
+                      <ArrowRight size={12} aria-hidden="true" />
+                    ) : null}
+                  </span>
+                ))}
+              </div>
               <figcaption>
                 <span className="testimonial-avatar" aria-hidden="true">
                   {testimonial.initials}
