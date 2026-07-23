@@ -34,30 +34,34 @@ const chapters = [
   {
     number: "03",
     eyebrow: "Inventory",
-    title: "Begin with what you have.",
-    body: "Discover every AI system, who owns it, where it runs, and how it is used.",
+    title: "Know every AI system you are responsible for.",
+    body: "Create one governed register for systems your organisation builds, buys, embeds, or pilots. Record ownership, providers, purpose, deployment context, and review status.",
     meta: "27 systems mapped",
+    visual: "inventory",
   },
   {
     number: "04",
     eyebrow: "Classify",
-    title: "Classify with confidence.",
-    body: "Follow risk, transparency, and data obligations system by system.",
-    meta: "Obligations assigned",
+    title: "Move from uncertainty to a documented assessment.",
+    body: "Guide each system through risk, transparency, and organisational questions while preserving the reasoning behind every decision.",
+    meta: "Assessments linked to obligations",
+    visual: "classify",
   },
   {
     number: "05",
     eyebrow: "Evidence",
-    title: "Grow a living evidence trail.",
-    body: "Collect once, keep current, and stay ready for internal or external review.",
-    meta: "11 prepared for review",
+    title: "Keep evidence connected and ready for review.",
+    body: "Link model cards, assessments, controls, documents, approvals, and change history to the systems they support.",
+    meta: "11 records prepared for review",
+    visual: "evidence",
   },
   {
     number: "06",
-    eyebrow: "Roles",
-    title: "One workspace. Every role.",
-    body: "Give legal, product, risk, and procurement teams one trusted source of truth.",
-    meta: "Five roles connected",
+    eyebrow: "Collaboration",
+    title: "Give every accountable team the same source of truth.",
+    body: "Legal, product, risk, security, and procurement work from shared records while retaining role-specific views and responsibilities.",
+    meta: "Five functions connected",
+    visual: "roles",
   },
 ];
 
@@ -158,6 +162,42 @@ const trustItems = [
     description: "Prepare clear review artefacts without rebuilding the story.",
     icon: PackageCheck,
     tone: "butter",
+  },
+];
+
+const trustedSectors = [
+  "Financial services",
+  "Health technology",
+  "Enterprise SaaS",
+  "Mobility",
+  "Public sector",
+  "Insurance",
+];
+
+const testimonials = [
+  {
+    quote:
+      "We need product context, legal reasoning, and evidence to stay connected as the system changes.",
+    role: "Head of AI Governance",
+    organisation: "European financial services group",
+    initials: "HG",
+    tone: "blue",
+  },
+  {
+    quote:
+      "A register is only useful when owners can see the next decision and the evidence needed to support it.",
+    role: "Director of Product Risk",
+    organisation: "Enterprise software company",
+    initials: "PR",
+    tone: "mint",
+  },
+  {
+    quote:
+      "The hard part is not producing another document. It is keeping the governance story current across teams.",
+    role: "Senior Legal Counsel",
+    organisation: "Regulated technology business",
+    initials: "LC",
+    tone: "peach",
   },
 ];
 
@@ -270,6 +310,116 @@ function SectionLabel({
       <span aria-hidden="true">/</span>
       {children}
     </p>
+  );
+}
+
+function ChapterVisual({ type }: { type: string }) {
+  if (type === "inventory") {
+    return (
+      <div className="chapter-visual chapter-register" aria-hidden="true">
+        <div className="visual-toolbar">
+          <span>AI system register</span>
+          <small>27 systems</small>
+        </div>
+        {[
+          ["TalentMatch EU", "Product", "Review required"],
+          ["Support Copilot", "Operations", "In progress"],
+          ["Demand Forecast", "Growth", "Mapped"],
+        ].map(([name, owner, status], index) => (
+          <div className="visual-system-row" key={name}>
+            <span className={`record-dot ${["peach", "blue", "mint"][index]}`} />
+            <strong>{name}</strong>
+            <span>{owner}</span>
+            <small>{status}</small>
+          </div>
+        ))}
+        <div className="visual-summary">
+          <span>8 require review</span>
+          <span>11 evidence complete</span>
+        </div>
+      </div>
+    );
+  }
+
+  if (type === "classify") {
+    return (
+      <div className="chapter-visual chapter-classifier" aria-hidden="true">
+        <div className="classifier-question">
+          <span>Purpose and deployment</span>
+          <strong>Does the system support an employment decision?</strong>
+          <div>
+            <span className="selected">Yes</span>
+            <span>No</span>
+            <span>Needs review</span>
+          </div>
+        </div>
+        <div className="risk-matrix">
+          <span className="matrix-label">Impact</span>
+          {Array.from({ length: 9 }, (_, index) => (
+            <i className={index === 7 ? "active" : ""} key={index} />
+          ))}
+          <span className="matrix-axis">Likelihood</span>
+        </div>
+        <div className="classification-result">
+          <ShieldCheck size={18} />
+          <span>
+            <small>Workflow assessment</small>
+            <strong>Potential high-risk classification</strong>
+          </span>
+        </div>
+      </div>
+    );
+  }
+
+  if (type === "evidence") {
+    return (
+      <div className="chapter-visual chapter-evidence-pack" aria-hidden="true">
+        <div className="evidence-spine">
+          <span />
+          <span />
+          <span />
+        </div>
+        {[
+          ["Model card", "Current"],
+          ["Risk assessment", "Reviewed"],
+          ["Human oversight", "Linked"],
+        ].map(([title, status], index) => (
+          <article className={`mini-evidence evidence-${index + 1}`} key={title}>
+            <FileText size={18} />
+            <small>Evidence 0{index + 1}</small>
+            <strong>{title}</strong>
+            <span>
+              <Check size={12} />
+              {status}
+            </span>
+          </article>
+        ))}
+        <div className="evidence-pack-label">
+          <PackageCheck size={18} />
+          Review pack · version 1.4
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="chapter-visual chapter-role-network" aria-hidden="true">
+      <div className="role-network-center">
+        <img src="/logo-mark.svg" alt="" />
+        <strong>One governed record</strong>
+        <span>Shared context</span>
+      </div>
+      {["Legal", "Product", "Risk", "Security", "Procurement"].map(
+        (role, index) => (
+          <span className={`role-node role-node-${index + 1}`} key={role}>
+            {role}
+          </span>
+        ),
+      )}
+      <svg viewBox="0 0 560 360" preserveAspectRatio="none">
+        <path d="M280 180 L108 70 M280 180 L445 75 M280 180 L485 235 M280 180 L280 320 M280 180 L72 245" />
+      </svg>
+    </div>
   );
 }
 
@@ -508,6 +658,9 @@ export function ActClarityHome() {
         const media = gsap.matchMedia();
         media.add("(min-width: 960px)", () => {
           const track = document.querySelector<HTMLElement>(".chapters-track");
+          const progress = document.querySelector<HTMLElement>(
+            ".chapter-progress span",
+          );
           if (!track) return;
           const distance = () =>
             Math.max(0, track.scrollWidth - window.innerWidth);
@@ -521,6 +674,11 @@ export function ActClarityHome() {
               pin: ".chapters-pin",
               scrub: 0.8,
               invalidateOnRefresh: true,
+              onUpdate: (self) => {
+                if (progress) {
+                  progress.style.transform = `scaleX(${Math.max(0.08, self.progress)})`;
+                }
+              },
             },
           });
         });
@@ -557,6 +715,17 @@ export function ActClarityHome() {
           },
         });
 
+        gsap.from(".testimonial-card", {
+          y: 36,
+          opacity: 0,
+          rotate: (index) => (index % 2 ? 0.8 : -0.8),
+          stagger: 0.12,
+          scrollTrigger: {
+            trigger: ".testimonial-grid",
+            start: "top 78%",
+          },
+        });
+
         gsap.from(".trust-item", {
           x: -24,
           opacity: 0,
@@ -564,6 +733,16 @@ export function ActClarityHome() {
           scrollTrigger: {
             trigger: ".trust-grid",
             start: "top 76%",
+          },
+        });
+
+        gsap.from(".session-step", {
+          y: 24,
+          opacity: 0,
+          stagger: 0.12,
+          scrollTrigger: {
+            trigger: ".session-path",
+            start: "top 78%",
           },
         });
       }, rootRef);
@@ -732,6 +911,19 @@ export function ActClarityHome() {
         </a>
       </section>
 
+      <section className="trusted-strip" aria-labelledby="trusted-heading">
+        <div className="trusted-strip-copy">
+          <span className="trusted-pulse" aria-hidden="true" />
+          <p id="trusted-heading">Built for teams trusted with AI decisions</p>
+          <small>Early-access programme · Poland and the European Union</small>
+        </div>
+        <div className="sector-list" aria-label="Industries ActClarity supports">
+          {trustedSectors.map((sector) => (
+            <span key={sector}>{sector}</span>
+          ))}
+        </div>
+      </section>
+
       <section className="problem-scroll" id="problem">
         <div className="problem-stage">
           <div className="problem-art" aria-hidden="true">
@@ -781,24 +973,26 @@ export function ActClarityHome() {
             <h2>From scattered systems to a living compliance programme.</h2>
           </div>
           <div className="chapters-track">
-            <div className="chapter-illustration" aria-hidden="true">
-              <ArtPicture name="actclarity-chapter-strip" />
-            </div>
             {chapters.map((chapter) => (
               <article className="chapter-panel" key={chapter.number}>
-                <p className="chapter-eyebrow">
-                  <span>{chapter.number}</span> / {chapter.eyebrow}
-                </p>
-                <h3>{chapter.title}</h3>
-                <p>{chapter.body}</p>
-                <span className="chapter-meta">
-                  <Check size={14} />
-                  {chapter.meta}
-                </span>
-                <a href="#observatory">
-                  Explore {chapter.eyebrow.toLowerCase()}
-                  <ArrowRight size={14} />
-                </a>
+                <div className="chapter-copy">
+                  <p className="chapter-eyebrow">
+                    <span>{chapter.number}</span> / {chapter.eyebrow}
+                  </p>
+                  <h3>{chapter.title}</h3>
+                  <p>{chapter.body}</p>
+                  <div className="chapter-actions">
+                    <span className="chapter-meta">
+                      <Check size={14} />
+                      {chapter.meta}
+                    </span>
+                    <a href="#observatory">
+                      Explore {chapter.eyebrow.toLowerCase()}
+                      <ArrowRight size={14} />
+                    </a>
+                  </div>
+                </div>
+                <ChapterVisual type={chapter.visual} />
               </article>
             ))}
           </div>
@@ -990,9 +1184,47 @@ export function ActClarityHome() {
         </div>
       </section>
 
+      <section className="testimonial-section" aria-labelledby="voices-heading">
+        <div className="testimonial-heading">
+          <SectionLabel number="09">Design-partner perspectives</SectionLabel>
+          <h2 id="voices-heading">
+            Governance leaders are asking for continuity, not another checklist.
+          </h2>
+          <p>
+            The product direction is shaped around recurring needs from
+            European legal, risk, product, and governance teams.
+          </p>
+        </div>
+        <div className="testimonial-grid">
+          {testimonials.map((testimonial, index) => (
+            <figure className={`testimonial-card ${testimonial.tone}`} key={testimonial.role}>
+              <span className="quote-mark" aria-hidden="true">
+                “
+              </span>
+              <blockquote>{testimonial.quote}</blockquote>
+              <figcaption>
+                <span className="testimonial-avatar" aria-hidden="true">
+                  {testimonial.initials}
+                </span>
+                <span>
+                  <strong>{testimonial.role}</strong>
+                  <small>{testimonial.organisation}</small>
+                </span>
+                <em>Representative profile</em>
+              </figcaption>
+              <span className="testimonial-index">0{index + 1}</span>
+            </figure>
+          ))}
+        </div>
+        <p className="testimonial-disclaimer">
+          Representative design-partner perspectives for this product demo, not
+          attributed customer endorsements.
+        </p>
+      </section>
+
       <section className="trust-section" id="security">
         <div className="trust-heading">
-          <SectionLabel number="09" light>
+          <SectionLabel number="10" light>
             Security and trust
           </SectionLabel>
           <h2>Audit confidence is built before the audit.</h2>
@@ -1024,7 +1256,7 @@ export function ActClarityHome() {
 
       <section className="pricing-section" id="pricing">
         <div className="section-heading">
-          <SectionLabel number="10">Plans</SectionLabel>
+          <SectionLabel number="11">Plans</SectionLabel>
           <h2>Start with your register. Grow into your programme.</h2>
           <p>
             Choose the workspace depth that matches your AI portfolio and
@@ -1066,7 +1298,7 @@ export function ActClarityHome() {
 
       <section className="faq-section" id="docs">
         <div className="faq-heading">
-          <SectionLabel number="11">Questions</SectionLabel>
+          <SectionLabel number="12">Questions</SectionLabel>
           <h2>The practical details.</h2>
           <p>
             For legal, risk, product, and procurement teams evaluating
@@ -1100,11 +1332,14 @@ export function ActClarityHome() {
 
       <section className="final-cta" id="company">
         <div className="final-cta-copy">
-          <SectionLabel number="12">Cultivate clarity</SectionLabel>
-          <h2>Turn your AI estate into a living evidence system.</h2>
+          <SectionLabel number="Next">
+            A practical first step
+          </SectionLabel>
+          <h2>Bring one AI system. Leave with a clearer governance plan.</h2>
           <p>
-            See how ActClarity maps systems, obligations, decisions, and proof
-            in one governed workspace.
+            In a focused working session, we will map the system, walk through
+            its likely obligations, and show the evidence trail your teams can
+            maintain together.
           </p>
           <div className="button-row">
             <button
@@ -1120,13 +1355,19 @@ export function ActClarityHome() {
               <Send size={15} />
             </a>
           </div>
-          <small>
-            A focused 30-minute working session. Bring your AI register or start
-            from a blank page.
-          </small>
         </div>
-        <div className="botanical-close" aria-hidden="true">
-          <ArtPicture name="actclarity-chapter-strip" />
+        <div className="session-path" aria-label="What happens in a demo session">
+          {[
+            ["01", "Map", "System, owner, provider, use"],
+            ["02", "Assess", "Likely risk and obligations"],
+            ["03", "Connect", "Evidence, controls, decisions"],
+          ].map(([number, title, detail]) => (
+            <div className="session-step" key={number}>
+              <span>{number}</span>
+              <strong>{title}</strong>
+              <small>{detail}</small>
+            </div>
+          ))}
         </div>
       </section>
 

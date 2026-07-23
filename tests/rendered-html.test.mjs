@@ -41,6 +41,9 @@ test("server-renders the complete ActClarity homepage", async () => {
   assert.match(html, /See every AI system in one governed view/);
   assert.match(html, /Request demo/);
   assert.match(html, /Supports EU AI Act readiness/);
+  assert.match(html, /Built for teams trusted with AI decisions/);
+  assert.match(html, /Design-partner perspectives/);
+  assert.match(html, /Bring one AI system/);
   assert.match(html, /not legal advice/);
   assert.match(html, /Skip to main content/);
   assert.doesNotMatch(html, /codex-preview|react-loading-skeleton|Lovable/i);
@@ -67,7 +70,8 @@ test("keeps brand assets and finished metadata wired", async () => {
 
   assert.match(page, /actclarity-evidence-garden\.avif/);
   assert.match(page, /actclarity-fragment-map/);
-  assert.match(page, /actclarity-chapter-strip/);
+  assert.match(page, /chapter-register/);
+  assert.match(page, /testimonial-section/);
   assert.match(layout, /Source_Serif_4/);
   assert.match(layout, /Inter/);
   assert.match(layout, /favicon\.svg/);

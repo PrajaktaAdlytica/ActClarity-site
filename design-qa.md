@@ -2,6 +2,35 @@
 
 Final result: passed
 
+## Redesign Review
+
+The first deployed version exposed three composition problems at a wide desktop
+viewport: the chapter illustration collided with text, the final CTA felt
+disconnected from the product story, and the page lacked a credible proof layer.
+
+The revised implementation preserves the original GSAP horizontal scroll while
+replacing the single stretched chapter image with four responsive product
+vignettes:
+
+- `qa-redesign-chapter-pinned.png`
+- `qa-redesign-chapter-second.png`
+- `qa-redesign-mobile-chapter-visual.png`
+
+The revision also adds an early audience-trust strip, clearly labelled
+representative design-partner perspectives, and an outcome-led working-session
+CTA:
+
+- `qa-redesign-trusted-2.png`
+- `qa-redesign-testimonials-2.png`
+- `qa-redesign-mobile-testimonials-2.png`
+- `qa-redesign-final-cta-3.png`
+- `qa-redesign-mobile-final-3.png`
+
+Desktop was reviewed at 1440 x 900. Mobile was reviewed at 390 x 844. The
+redesigned scenes have no text collisions or horizontal overflow, retain
+keyboard-readable document order, and preserve the vertical reduced-motion
+fallback.
+
 ## Source
 
 - Figma file: https://www.figma.com/design/ZDADzng6ydSgxybih9WKvg
@@ -46,6 +75,12 @@ Final result: passed
 1. Desktop hero headline wrapped to four lines instead of the approved three. Reduced the maximum display size and constrained the copy width.
 2. Mobile hero used the powder-blue field too early, pushed the artwork below the fold, and wrapped the secondary CTA. Restored the cream field, reduced the mobile display size, moved artwork into the first viewport, and shortened the mobile CTA label.
 3. Initial optimized images failed under the Vinext development runtime. Replaced them with responsive AVIF/WebP/PNG picture sources.
+4. The first horizontal chapter used one 240vw decorative illustration behind
+   all panels, which created collisions and large inactive areas. Rebuilt every
+   panel around a distinct, responsive product vignette while retaining the
+   existing pin and horizontal scrub.
+5. Replaced the disconnected “Cultivate clarity” panel with a concrete
+   three-step demo outcome and added the missing trust and perspective sections.
 
 ## Remaining Differences
 
