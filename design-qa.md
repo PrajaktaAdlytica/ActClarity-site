@@ -111,6 +111,13 @@ fallback.
    overflow in `qa-product-final-desktop.png`, `qa-product-final-mobile.png`,
    `qa-mobile-menu-final.png`, `qa-home-final.png`, and
    `qa-home-final-mobile.png`.
+10. Rebuilt the section `02` governance fragments as a structured evidence
+    matrix. The four records now share a two-column desktop grid, matched row
+    heights, consistent gutters, and a deliberate deployment-to-evidence-to-
+    evaluation-to-vendor reading path. Mobile retains every record in a
+    single-column sequence with staged reveals and no overlap. Verified in
+    `qa-problem-grid-revealed-desktop.png` and
+    `qa-problem-grid-mobile.png`.
 
 ## Remaining Differences
 

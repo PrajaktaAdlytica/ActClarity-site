@@ -766,6 +766,42 @@ h3 {
   max-width: 21rem;
 }
 
+.problem-cards {
+  display: grid;
+  gap: 1.25rem;
+  grid-template-areas:
+    "deployment folder"
+    "notebook vendor";
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  left: 43%;
+  max-width: 45rem;
+  position: absolute;
+  right: 6%;
+  top: 16%;
+  z-index: 3;
+}
+
+.problem-cards::before {
+  border: 1px solid rgb(16 47 42 / 12%);
+  content: "";
+  inset: -1.4rem;
+  pointer-events: none;
+  position: absolute;
+}
+
+.problem-cards::after {
+  border-block: 1px dashed rgb(16 47 42 / 18%);
+  content: "";
+  height: calc(50% + 1.25rem);
+  left: 50%;
+  pointer-events: none;
+  position: absolute;
+  top: 25%;
+  transform: translate(-50%, -50%) rotate(90deg);
+  width: calc(50% + 1.25rem);
+  z-index: -1;
+}
+
 .problem-card {
   background: rgb(255 253 248 / 95%);
   border: 1px solid var(--line);
@@ -773,9 +809,10 @@ h3 {
   box-shadow: var(--shadow-small);
   display: grid;
   gap: 0.75rem;
+  min-height: 12.5rem;
   padding: 0.9rem;
-  position: absolute;
-  width: 16rem;
+  position: relative;
+  width: 100%;
   z-index: 3;
   transition:
     border-color 220ms ease,
@@ -991,23 +1028,19 @@ h3 {
 }
 
 .fragment-deployment {
-  left: 43%;
-  top: 17%;
+  grid-area: deployment;
 }
 
 .fragment-notebook {
-  left: 51%;
-  top: 57%;
+  grid-area: notebook;
 }
 
 .fragment-vendor {
-  left: 64%;
-  top: 44%;
+  grid-area: vendor;
 }
 
 .fragment-folder {
-  left: 72%;
-  top: 19%;
+  grid-area: folder;
 }
 
 .trace-note {
@@ -3128,27 +3161,18 @@ h3 {
     inset: 15rem -20% 0 -10%;
   }
 
-  .problem-card {
-    width: 14rem;
-  }
-
-  .fragment-deployment {
-    left: 55%;
-    top: 31%;
-  }
-
-  .fragment-notebook {
-    left: 7%;
-    top: 55%;
-  }
-
-  .fragment-vendor {
+  .problem-cards {
+    gap: 1rem;
+    grid-template-areas:
+      "deployment folder"
+      "notebook vendor";
     left: 48%;
-    top: 73%;
+    right: 3.5%;
+    top: 29%;
   }
 
-  .fragment-folder {
-    display: none;
+  .problem-card {
+    min-height: 11.5rem;
   }
 
   .chapters-section {
@@ -3439,17 +3463,23 @@ h3 {
   }
 
   .problem-scroll {
-    min-height: 59rem;
+    height: auto;
+    min-height: 0;
   }
 
   .problem-stage {
-    min-height: 50rem;
+    height: auto;
+    min-height: 0;
+    padding: 4.5rem 1.25rem 5rem;
+    position: relative;
   }
 
   .problem-copy {
-    left: 1.25rem;
-    right: 1.25rem;
-    top: 4.5rem;
+    left: auto;
+    max-width: 22rem;
+    position: relative;
+    right: auto;
+    top: auto;
   }
 
   .problem-copy h2 {
@@ -3457,44 +3487,53 @@ h3 {
   }
 
   .problem-art {
-    inset: 17rem -55% 0 -40%;
+    inset: 14rem -70% 0 -55%;
+  }
+
+  .problem-cards {
+    gap: 0.85rem;
+    grid-template-areas:
+      "deployment"
+      "folder"
+      "notebook"
+      "vendor";
+    grid-template-columns: 1fr;
+    left: auto;
+    margin-top: 3.5rem;
+    max-width: none;
+    position: relative;
+    right: auto;
+    top: auto;
+  }
+
+  .problem-cards::before {
+    inset: -0.75rem;
+  }
+
+  .problem-cards::after {
+    display: none;
   }
 
   .problem-card {
     gap: 0.55rem;
+    min-height: 0;
     padding: 0.75rem;
-    width: 12.5rem;
+    width: 100%;
   }
 
   .problem-card strong {
     font-size: 0.9rem;
   }
 
-  .fragment-deployment {
-    left: 45%;
-    top: 36%;
-  }
-
-  .fragment-notebook {
-    left: 4%;
-    top: 58%;
-  }
-
-  .fragment-vendor {
-    left: 43%;
-    top: 75%;
-  }
-
   .fragment-header {
-    grid-template-columns: auto 1fr;
-  }
-
-  .fragment-badge {
-    display: none;
+    grid-template-columns: auto 1fr auto;
   }
 
   .trace-note {
-    bottom: 1.5rem;
+    bottom: auto;
+    margin: 2.25rem 0 0;
+    position: relative;
+    right: auto;
   }
 
   .chapters-pin {
