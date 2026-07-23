@@ -118,6 +118,12 @@ fallback.
     single-column sequence with staged reveals and no overlap. Verified in
     `qa-problem-grid-revealed-desktop.png` and
     `qa-problem-grid-mobile.png`.
+11. Added route-aware navigation menus for Product, Solutions, and Company.
+    Desktop menus support hover, click, keyboard focus, Escape dismissal, and
+    outside-click closing. Mobile uses scrollable accordion groups with clear
+    descriptions and retains direct access to Security, Docs, Pricing, and the
+    demo request. Verified with zero overflow in
+    `qa-nav-dropdown-desktop-final.png` and `qa-nav-dropdown-mobile.png`.
 
 ## Remaining Differences
 

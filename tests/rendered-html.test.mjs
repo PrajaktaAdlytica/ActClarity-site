@@ -44,6 +44,9 @@ test("server-renders the complete ActClarity homepage", async () => {
   assert.match(html, /Built for teams trusted with AI decisions/);
   assert.match(html, /Design-partner perspectives/);
   assert.match(html, /Bring one AI system/);
+  assert.match(html, /Product overview/);
+  assert.match(html, /Legal and compliance/);
+  assert.match(html, /About ActClarity/);
   assert.match(html, /not legal advice/);
   assert.match(html, /Skip to main content/);
   assert.doesNotMatch(html, /codex-preview|react-loading-skeleton|Lovable/i);

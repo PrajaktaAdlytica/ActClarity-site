@@ -1,21 +1,120 @@
 "use client";
 
-import { ArrowRight, ArrowUpRight, Menu, X } from "lucide-react";
+import {
+  ArrowRight,
+  ArrowUpRight,
+  ChevronDown,
+  Menu,
+  X,
+} from "lucide-react";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 
-const navigation = [
-  ["Product", "/product"],
-  ["Solutions", "/solutions"],
-  ["Security", "/security"],
-  ["Docs", "/docs"],
-  ["Pricing", "/pricing"],
-  ["Company", "/company"],
-] as const;
+type MenuItem = {
+  label: string;
+  href: string;
+  description: string;
+};
+
+type NavigationItem =
+  | {
+      label: string;
+      href: string;
+      menu?: undefined;
+    }
+  | {
+      label: string;
+      href?: undefined;
+      menu: MenuItem[];
+    };
+
+const navigation: NavigationItem[] = [
+  {
+    label: "Product",
+    menu: [
+      {
+        label: "Product overview",
+        href: "/product",
+        description: "The complete governed workflow",
+      },
+      {
+        label: "Inventory",
+        href: "/product#inventory",
+        description: "Map systems, owners, and providers",
+      },
+      {
+        label: "Classify",
+        href: "/product#classification",
+        description: "Preserve risk reasoning and obligations",
+      },
+      {
+        label: "Evidence",
+        href: "/product#evidence",
+        description: "Connect proof to every decision",
+      },
+    ],
+  },
+  {
+    label: "Solutions",
+    menu: [
+      {
+        label: "Solutions overview",
+        href: "/solutions",
+        description: "One workspace for accountable teams",
+      },
+      {
+        label: "Legal and compliance",
+        href: "/solutions#legal",
+        description: "Review obligations with context",
+      },
+      {
+        label: "Product and risk",
+        href: "/solutions#product",
+        description: "Make release requirements visible",
+      },
+      {
+        label: "Procurement",
+        href: "/solutions#procurement",
+        description: "Assess AI providers before purchase",
+      },
+    ],
+  },
+  { label: "Security", href: "/security" },
+  { label: "Docs", href: "/docs" },
+  { label: "Pricing", href: "/pricing" },
+  {
+    label: "Company",
+    menu: [
+      {
+        label: "About ActClarity",
+        href: "/company",
+        description: "Our mission and European focus",
+      },
+      {
+        label: "Principles",
+        href: "/company#principles",
+        description: "How we build for consequential work",
+      },
+      {
+        label: "Careers",
+        href: "/company#careers",
+        description: "Help build responsible AI infrastructure",
+      },
+      {
+        label: "Contact",
+        href: "/company#contact",
+        description: "Start with one real AI workflow",
+      },
+    ],
+  },
+];
 
 export function SiteHeader({ current }: { current?: string }) {
   const [open, setOpen] = useState(false);
+  const [desktopOpen, setDesktopOpen] = useState<string | null>(null);
+  const [mobileOpen, setMobileOpen] = useState<string | null>(null);
   const [scrolled, setScrolled] = useState(false);
+  const headerRef = useRef<HTMLElement>(null);
   const menuButtonRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
@@ -26,25 +125,45 @@ export function SiteHeader({ current }: { current?: string }) {
   }, []);
 
   useEffect(() => {
-    if (!open) return;
+    if (!open && !desktopOpen) return;
     const previousOverflow = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
+    if (open) document.body.style.overflow = "hidden";
+
     const onKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") {
+      if (event.key !== "Escape") return;
+      setDesktopOpen(null);
+      if (open) {
         setOpen(false);
         requestAnimationFrame(() => menuButtonRef.current?.focus());
       }
     };
+    const onPointerDown = (event: PointerEvent) => {
+      if (!headerRef.current?.contains(event.target as Node)) {
+        setDesktopOpen(null);
+      }
+    };
+
     window.addEventListener("keydown", onKeyDown);
+    window.addEventListener("pointerdown", onPointerDown);
     return () => {
       document.body.style.overflow = previousOverflow;
       window.removeEventListener("keydown", onKeyDown);
+      window.removeEventListener("pointerdown", onPointerDown);
     };
-  }, [open]);
+  }, [desktopOpen, open]);
+
+  function closeNavigation() {
+    setOpen(false);
+    setDesktopOpen(null);
+    setMobileOpen(null);
+  }
 
   return (
-    <header className={`site-header${scrolled ? " scrolled" : ""}`}>
-      <Link href="/" aria-label="ActClarity home" onClick={() => setOpen(false)}>
+    <header
+      ref={headerRef}
+      className={`site-header${scrolled ? " scrolled" : ""}`}
+    >
+      <Link href="/" aria-label="ActClarity home" onClick={closeNavigation}>
         <span className="brand-lockup">
           <img
             className="brand-mark"
@@ -57,15 +176,70 @@ export function SiteHeader({ current }: { current?: string }) {
         </span>
       </Link>
       <nav className="desktop-nav" aria-label="Primary navigation">
-        {navigation.map(([label, href]) => (
-          <Link
-            className={current === label.toLowerCase() ? "active" : undefined}
-            href={href}
-            key={href}
-          >
-            {label}
-          </Link>
-        ))}
+        {navigation.map((item) => {
+          const key = item.label.toLowerCase();
+          if (!item.menu) {
+            return (
+              <Link
+                className={`nav-direct${current === key ? " active" : ""}`}
+                href={item.href}
+                key={item.href}
+              >
+                {item.label}
+              </Link>
+            );
+          }
+
+          const expanded = desktopOpen === key;
+          return (
+            <div
+              className="nav-group"
+              key={item.label}
+              onMouseEnter={() => setDesktopOpen(key)}
+              onMouseLeave={() => setDesktopOpen(null)}
+              onBlur={(event) => {
+                if (!event.currentTarget.contains(event.relatedTarget)) {
+                  setDesktopOpen(null);
+                }
+              }}
+            >
+              <button
+                className={`nav-trigger${current === key ? " active" : ""}`}
+                type="button"
+                aria-expanded={expanded}
+                aria-controls={`${key}-navigation-menu`}
+                onClick={() => setDesktopOpen(expanded ? null : key)}
+              >
+                {item.label}
+                <ChevronDown size={13} />
+              </button>
+              <div
+                id={`${key}-navigation-menu`}
+                className={`nav-dropdown${expanded ? " open" : ""}`}
+                aria-hidden={!expanded}
+              >
+                <span className="nav-dropdown-label">
+                  Explore {item.label.toLowerCase()}
+                </span>
+                {item.menu.map((entry, index) => (
+                  <Link
+                    href={entry.href}
+                    key={entry.href}
+                    onClick={closeNavigation}
+                    tabIndex={expanded ? 0 : -1}
+                  >
+                    <span className="nav-menu-index">0{index + 1}</span>
+                    <span>
+                      <strong>{entry.label}</strong>
+                      <small>{entry.description}</small>
+                    </span>
+                    <ArrowUpRight size={14} />
+                  </Link>
+                ))}
+              </div>
+            </div>
+          );
+        })}
       </nav>
       <div className="header-actions">
         <Link className="signin-link" href="/sign-in">
@@ -82,7 +256,10 @@ export function SiteHeader({ current }: { current?: string }) {
           aria-label={open ? "Close navigation" : "Open navigation"}
           aria-expanded={open}
           aria-controls="mobile-navigation"
-          onClick={() => setOpen((value) => !value)}
+          onClick={() => {
+            setOpen((value) => !value);
+            setMobileOpen(null);
+          }}
         >
           {open ? <X size={22} /> : <Menu size={22} />}
         </button>
@@ -93,16 +270,55 @@ export function SiteHeader({ current }: { current?: string }) {
         aria-label="Mobile navigation"
         hidden={!open}
       >
-        {navigation.map(([label, href]) => (
-          <Link href={href} key={href} onClick={() => setOpen(false)}>
-            {label}
-            <ArrowRight size={16} />
-          </Link>
-        ))}
+        {navigation.map((item) => {
+          if (!item.menu) {
+            return (
+              <Link href={item.href} key={item.href} onClick={closeNavigation}>
+                {item.label}
+                <ArrowRight size={16} />
+              </Link>
+            );
+          }
+
+          const key = item.label.toLowerCase();
+          const expanded = mobileOpen === key;
+          return (
+            <div className="mobile-nav-group" key={item.label}>
+              <button
+                type="button"
+                aria-expanded={expanded}
+                aria-controls={`${key}-mobile-menu`}
+                onClick={() => setMobileOpen(expanded ? null : key)}
+              >
+                {item.label}
+                <ChevronDown size={17} />
+              </button>
+              <div
+                id={`${key}-mobile-menu`}
+                className={`mobile-submenu${expanded ? " open" : ""}`}
+                hidden={!expanded}
+              >
+                {item.menu.map((entry) => (
+                  <Link
+                    href={entry.href}
+                    key={entry.href}
+                    onClick={closeNavigation}
+                  >
+                    <span>
+                      <strong>{entry.label}</strong>
+                      <small>{entry.description}</small>
+                    </span>
+                    <ArrowRight size={14} />
+                  </Link>
+                ))}
+              </div>
+            </div>
+          );
+        })}
         <Link
           className="button primary"
           href="/request-demo"
-          onClick={() => setOpen(false)}
+          onClick={closeNavigation}
         >
           Request demo
           <ArrowUpRight size={16} />
