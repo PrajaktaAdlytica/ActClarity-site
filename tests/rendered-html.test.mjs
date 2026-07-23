@@ -60,6 +60,44 @@ test("server-renders a polished sign-in route", async () => {
   assert.match(html, /Return to ActClarity home/);
 });
 
+test("server-renders the complete marketing route set", async () => {
+  const routes = [
+    ["/product", /One governed record for every AI system/],
+    ["/solutions", /One compliance workspace\. Every responsible team/],
+    ["/security", /Evidence you can trace\. Access you can govern/],
+    ["/docs", /Clear guidance for work that cannot stay theoretical/],
+    ["/pricing", /Start with the register\. Grow into complete readiness/],
+    [
+      "/company",
+      /Building the operating layer for responsible AI in Europe/,
+    ],
+    ["/request-demo", /Bring one AI system\. Leave with a clearer plan/],
+  ];
+
+  for (const [path, heading] of routes) {
+    const response = await render(path);
+    assert.equal(response.status, 200, `${path} should render`);
+    const html = await response.text();
+    assert.match(html, heading);
+    assert.match(html, /href="\/product"/);
+    assert.match(html, /href="\/solutions"/);
+    assert.match(html, /href="\/security"/);
+    assert.match(html, /href="\/docs"/);
+    assert.match(html, /href="\/pricing"/);
+    assert.match(html, /href="\/company"/);
+    assert.match(html, /href="\/request-demo"/);
+  }
+
+  const solutions = await (await render("/solutions")).text();
+  assert.match(solutions, /id="procurement"/);
+  assert.match(solutions, /Assess AI providers before the contract is signed/);
+
+  const company = await (await render("/company")).text();
+  for (const destination of ["careers", "contact", "privacy", "terms"]) {
+    assert.match(company, new RegExp(`id="${destination}"`));
+  }
+});
+
 test("keeps brand assets and finished metadata wired", async () => {
   const [page, layout, stylesheet, packageJson] = await Promise.all([
     readFile(new URL("../app/actclarity-home.tsx", import.meta.url), "utf8"),

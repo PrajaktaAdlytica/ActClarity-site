@@ -15,7 +15,6 @@ import {
   Linkedin,
   LockKeyhole,
   Mail,
-  Menu,
   Minus,
   PackageCheck,
   Plus,
@@ -25,6 +24,7 @@ import {
   X,
 } from "lucide-react";
 import { FormEvent, useEffect, useRef, useState } from "react";
+import { SiteHeader } from "@/components/site-header";
 
 const productTabs = [
   "Inventory",
@@ -583,8 +583,6 @@ function DemoModal({
 export function ActClarityHome() {
   const rootRef = useRef<HTMLElement>(null);
   const demoTriggerRef = useRef<HTMLElement | null>(null);
-  const menuButtonRef = useRef<HTMLButtonElement>(null);
-  const [menuOpen, setMenuOpen] = useState(false);
   const [demoOpen, setDemoOpen] = useState(false);
   const [openFaq, setOpenFaq] = useState<number | null>(0);
   const [activeProductTab, setActiveProductTab] = useState("Inventory");
@@ -659,6 +657,16 @@ export function ActClarityHome() {
             start: "top top",
             end: "bottom bottom",
             scrub: true,
+          },
+        });
+
+        gsap.from(".trusted-strip-copy, .sector-list span", {
+          y: 22,
+          opacity: 0,
+          stagger: 0.06,
+          scrollTrigger: {
+            trigger: ".trusted-strip",
+            start: "top 86%",
           },
         });
 
@@ -792,6 +800,39 @@ export function ActClarityHome() {
           },
         });
 
+        gsap.from(".price-card", {
+          y: (index) => (index === 1 ? 64 : 38),
+          opacity: 0,
+          rotate: (index) => [-0.7, 0.4, 0.7][index] ?? 0,
+          stagger: 0.1,
+          scrollTrigger: {
+            trigger: ".pricing-grid",
+            start: "top 82%",
+            end: "top 48%",
+            scrub: 0.7,
+          },
+        });
+
+        gsap.from(".faq-item", {
+          x: 32,
+          opacity: 0,
+          stagger: 0.08,
+          scrollTrigger: {
+            trigger: ".faq-list",
+            start: "top 82%",
+          },
+        });
+
+        gsap.from(".final-cta-copy > *", {
+          x: -42,
+          opacity: 0,
+          stagger: 0.08,
+          scrollTrigger: {
+            trigger: ".final-cta",
+            start: "top 76%",
+          },
+        });
+
         gsap.from(".session-step", {
           y: 24,
           opacity: 0,
@@ -813,27 +854,6 @@ export function ActClarityHome() {
 
     return () => dispose();
   }, []);
-
-  useEffect(() => {
-    if (!menuOpen) return;
-    const previousOverflow = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
-    const onKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") {
-        setMenuOpen(false);
-        requestAnimationFrame(() => menuButtonRef.current?.focus());
-      }
-    };
-    window.addEventListener("keydown", onKeyDown);
-    return () => {
-      document.body.style.overflow = previousOverflow;
-      window.removeEventListener("keydown", onKeyDown);
-    };
-  }, [menuOpen]);
-
-  function closeMenu() {
-    setMenuOpen(false);
-  }
 
   function openDemo() {
     demoTriggerRef.current = document.activeElement as HTMLElement | null;
@@ -857,69 +877,7 @@ export function ActClarityHome() {
         Skip to main content
       </a>
 
-      <header className="site-header">
-        <a href="#top" aria-label="ActClarity home" onClick={closeMenu}>
-          <BrandMark />
-        </a>
-        <nav className="desktop-nav" aria-label="Primary navigation">
-          <a href="#product">Product</a>
-          <a href="#solutions">Solutions</a>
-          <a href="#security">Security</a>
-          <a href="#docs">Docs</a>
-          <a href="#pricing">Pricing</a>
-          <a href="#company">Company</a>
-        </nav>
-        <div className="header-actions">
-          <a className="signin-link" href="/sign-in">
-            Sign in
-          </a>
-          <button
-            className="button primary header-cta"
-            type="button"
-            onClick={openDemo}
-          >
-            Request demo
-            <ArrowUpRight size={15} />
-          </button>
-          <button
-            ref={menuButtonRef}
-            className="icon-button menu-button"
-            type="button"
-            aria-label={menuOpen ? "Close navigation" : "Open navigation"}
-            aria-expanded={menuOpen}
-            aria-controls="mobile-navigation"
-            onClick={() => setMenuOpen((value) => !value)}
-          >
-            {menuOpen ? <X size={22} /> : <Menu size={22} />}
-          </button>
-        </div>
-        <nav
-          id="mobile-navigation"
-          className={`mobile-nav${menuOpen ? " open" : ""}`}
-          aria-label="Mobile navigation"
-          hidden={!menuOpen}
-        >
-          {["product", "solutions", "security", "docs", "pricing", "company"].map(
-            (item) => (
-              <a key={item} href={`#${item}`} onClick={closeMenu}>
-                {item.charAt(0).toUpperCase() + item.slice(1)}
-                <ArrowRight size={16} />
-              </a>
-            ),
-          )}
-          <button
-            className="button primary"
-            type="button"
-            onClick={() => {
-              closeMenu();
-              openDemo();
-            }}
-          >
-            Request demo
-            <ArrowUpRight size={16} />
-          </button>
-        </nav>
-      </header>
+      <SiteHeader />
 
       <section className="hero" id="top">
         <div className="hero-art" aria-hidden="true">
@@ -1540,31 +1498,31 @@ export function ActClarityHome() {
           <div className="footer-links">
             <div>
               <strong>Product</strong>
-              <a href="#product">Inventory</a>
-              <a href="#product">Classify</a>
-              <a href="#evidence">Evidence</a>
-              <a href="#pricing">Pricing</a>
+              <a href="/product#inventory">Inventory</a>
+              <a href="/product#classification">Classify</a>
+              <a href="/product#evidence">Evidence</a>
+              <a href="/pricing">Pricing</a>
             </div>
             <div>
               <strong>Solutions</strong>
-              <a href="#solutions">Legal</a>
-              <a href="#solutions">Product</a>
-              <a href="#solutions">Risk</a>
-              <a href="#solutions">Procurement</a>
+              <a href="/solutions#legal">Legal</a>
+              <a href="/solutions#product">Product</a>
+              <a href="/solutions#risk">Risk</a>
+              <a href="/solutions#procurement">Procurement</a>
             </div>
             <div>
               <strong>Resources</strong>
-              <a href="#docs">Docs</a>
-              <a href="#security">Security</a>
-              <a href="mailto:hello@actclarity.com">Contact</a>
-              <a href="#docs">EU AI Act guide</a>
+              <a href="/docs">Docs</a>
+              <a href="/security">Security</a>
+              <a href="/company#contact">Contact</a>
+              <a href="/docs#eu-ai-act">EU AI Act guide</a>
             </div>
             <div>
               <strong>Company</strong>
-              <a href="#company">About</a>
-              <a href="#company">Careers</a>
-              <a href="#privacy">Privacy</a>
-              <a href="#terms">Terms</a>
+              <a href="/company">About</a>
+              <a href="/company#careers">Careers</a>
+              <a href="/company#privacy">Privacy</a>
+              <a href="/company#terms">Terms</a>
             </div>
           </div>
         </div>

@@ -101,6 +101,16 @@ fallback.
    Verified at 1997 x 1255 and 390 x 844 in
    `qa-perspectives-motion-desktop.png` and
    `qa-perspectives-motion-mobile.png`.
+9. Completed the marketing system with route-aware Product, Solutions,
+   Security, Docs, Pricing, Company, and Request Demo pages. Each route uses a
+   distinct pastel field, domain-specific visual language, alternating
+   scroll-reveal chapters, responsive hover states, and a shared transparent
+   navigation that gains contrast after scroll. Added a dedicated Procurement
+   workflow and complete Company destinations for careers, contact, privacy,
+   and terms. Verified at 1440 x 900 and 390 x 844 with zero horizontal
+   overflow in `qa-product-final-desktop.png`, `qa-product-final-mobile.png`,
+   `qa-mobile-menu-final.png`, `qa-home-final.png`, and
+   `qa-home-final-mobile.png`.
 
 ## Remaining Differences
 
