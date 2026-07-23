@@ -81,6 +81,12 @@ fallback.
    existing pin and horizontal scrub.
 5. Replaced the disconnected “Cultivate clarity” panel with a concrete
    three-step demo outcome and added the missing trust and perspective sections.
+6. At a 1997 x 1255 Safari viewport, the pixel-based horizontal pin duration
+   could outlive the `03–06` section and overlap sections `07–08`. Bound the
+   ScrollTrigger endpoint to the section bottom and added an opaque pinned
+   canvas. Verified the final collaboration panel, the clean section `07`
+   handoff, and isolated section `08` in `qa-wide-chapters-end-fixed.png` and
+   `qa-wide-section-08-fixed.png`.
 
 ## Remaining Differences
 

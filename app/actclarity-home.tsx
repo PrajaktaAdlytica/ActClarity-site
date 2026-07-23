@@ -670,7 +670,7 @@ export function ActClarityHome() {
             scrollTrigger: {
               trigger: ".chapters-section",
               start: "top top",
-              end: () => `+=${distance() + window.innerHeight * 1.3}`,
+              end: "bottom bottom",
               pin: ".chapters-pin",
               scrub: 0.8,
               invalidateOnRefresh: true,

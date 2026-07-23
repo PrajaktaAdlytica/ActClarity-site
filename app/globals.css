@@ -817,6 +817,7 @@ h3 {
 }
 
 .chapters-pin {
+  background: var(--cream);
   height: 100svh;
   min-height: 50rem;
   overflow: hidden;
