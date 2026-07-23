@@ -1,0 +1,20 @@
+<svg
+  width="120"
+  height="120"
+  viewBox="0 0 120 120"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+  role="img"
+  aria-labelledby="actclarity-mark-title"
+>
+  <title id="actclarity-mark-title">ActClarity Clarity Bloom</title>
+  <circle cx="85.461" cy="60" r="9.035" fill="#2C74C9"/>
+  <circle cx="78.004" cy="78.004" r="9.035" fill="#2C74C9" fill-opacity=".68"/>
+  <circle cx="60" cy="85.461" r="9.035" fill="#2C74C9"/>
+  <circle cx="41.996" cy="78.004" r="9.035" fill="#2C74C9" fill-opacity=".68"/>
+  <circle cx="34.539" cy="60" r="9.035" fill="#2C74C9"/>
+  <circle cx="41.996" cy="41.996" r="9.035" fill="#2C74C9" fill-opacity=".68"/>
+  <circle cx="60" cy="34.539" r="9.035" fill="#2C74C9"/>
+  <circle cx="78.004" cy="41.996" r="9.035" fill="#2C74C9" fill-opacity=".68"/>
+  <circle cx="60" cy="60" r="8.008" fill="#FFFDF8" stroke="#2C74C9" stroke-width="2.053"/>
+</svg>
