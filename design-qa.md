@@ -124,6 +124,14 @@ fallback.
     descriptions and retains direct access to Security, Docs, Pricing, and the
     demo request. Verified with zero overflow in
     `qa-nav-dropdown-desktop-final.png` and `qa-nav-dropdown-mobile.png`.
+12. Added a single-viewport cinematic entry scene above the existing homepage
+    hero without changing the established story beneath it. Three crossfading
+    video modes map to Inventory, Classify, and Evidence; the ActClarity
+    wordmark, Warsaw clock, workspace status, and entry CTA use the existing
+    brand typography and palette. The shared navigation switches from a
+    white-on-video state to its paper treatment before the light botanical
+    hero enters. Verified at 1440 x 900 and 390 x 844 in
+    `qa-entry-desktop.png` and `qa-entry-mobile-final.png`.
 
 ## Remaining Differences
 

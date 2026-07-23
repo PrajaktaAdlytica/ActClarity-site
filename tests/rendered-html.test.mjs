@@ -37,6 +37,11 @@ test("server-renders the complete ActClarity homepage", async () => {
     html,
     /Compliance grows from knowing what you have\./,
   );
+  assert.match(html, /ActClarity<span>\.<\/span>/);
+  assert.match(html, /EU AI Act workspace/);
+  assert.match(html, /Enter the workspace/);
+  assert.match(html, /href="#foundation"/);
+  assert.match(html, /hf_20260629_030107/);
   assert.match(html, /AI lives in fragments/);
   assert.match(html, /See every AI system in one governed view/);
   assert.match(html, /Request demo/);

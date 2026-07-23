@@ -34,6 +34,21 @@ const productTabs = [
   "Controls",
 ];
 
+const entryScenes = [
+  {
+    label: "Inventory",
+    src: "https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260629_030107_874273ea-684a-4e90-bb96-8fdfde48d53d.mp4",
+  },
+  {
+    label: "Classify",
+    src: "https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260629_032424_3c9c2a9d-807b-4482-80e6-dd6d9dfd4545.mp4",
+  },
+  {
+    label: "Evidence",
+    src: "https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260627_094019_4214ea73-b963-46a4-8327-61489192de99.mp4",
+  },
+] as const;
+
 const chapters = [
   {
     number: "03",
@@ -586,7 +601,23 @@ export function ActClarityHome() {
   const [demoOpen, setDemoOpen] = useState(false);
   const [openFaq, setOpenFaq] = useState<number | null>(0);
   const [activeProductTab, setActiveProductTab] = useState("Inventory");
+  const [activeEntryScene, setActiveEntryScene] = useState(0);
+  const [warsawTime, setWarsawTime] = useState("--:--:--");
   const [newsletterSubmitted, setNewsletterSubmitted] = useState(false);
+
+  useEffect(() => {
+    const formatter = new Intl.DateTimeFormat("en-GB", {
+      timeZone: "Europe/Warsaw",
+      hour: "2-digit",
+      minute: "2-digit",
+      second: "2-digit",
+      hour12: false,
+    });
+    const update = () => setWarsawTime(formatter.format(new Date()));
+    update();
+    const timer = window.setInterval(update, 1000);
+    return () => window.clearInterval(timer);
+  }, []);
 
   useEffect(() => {
     const reduced = window.matchMedia(
@@ -877,9 +908,70 @@ export function ActClarityHome() {
         Skip to main content
       </a>
 
-      <SiteHeader />
+      <SiteHeader darkAtTop />
 
-      <section className="hero" id="top">
+      <section className="entry-hero" id="top" aria-labelledby="entry-title">
+        <div className="entry-videos" aria-hidden="true">
+          {entryScenes.map((scene, index) => (
+            <video
+              className={activeEntryScene === index ? "active" : undefined}
+              key={scene.src}
+              src={scene.src}
+              muted
+              autoPlay
+              playsInline
+              loop
+              preload={index === 0 ? "auto" : "metadata"}
+            />
+          ))}
+        </div>
+        <div className="entry-scrim" aria-hidden="true" />
+        <div className="entry-content">
+          <div className="entry-control-row">
+            <div
+              className="entry-switcher"
+              aria-label="ActClarity product pillars"
+            >
+              {entryScenes.map((scene, index) => (
+                <button
+                  className={activeEntryScene === index ? "active" : undefined}
+                  type="button"
+                  key={scene.label}
+                  aria-pressed={activeEntryScene === index}
+                  onClick={() => setActiveEntryScene(index)}
+                >
+                  <span>0{index + 1} /</span>
+                  {scene.label}
+                </button>
+              ))}
+            </div>
+            <div className="entry-status">
+              <span>
+                <i aria-hidden="true" />
+                EU AI Act workspace
+              </span>
+              <span>Warsaw {warsawTime}</span>
+            </div>
+          </div>
+          <div className="entry-identity-row">
+            <h1 id="entry-title">
+              ActClarity<span>.</span>
+            </h1>
+            <div className="entry-intro">
+              <p>
+                One governed workspace to inventory AI, classify obligations,
+                and keep evidence ready for review.
+              </p>
+              <a href="#foundation">
+                Enter the workspace
+                <ArrowRight size={16} />
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="hero" id="foundation">
         <div className="hero-art" aria-hidden="true">
           <ArtPicture name="actclarity-evidence-garden" />
         </div>

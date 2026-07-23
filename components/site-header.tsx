@@ -109,7 +109,13 @@ const navigation: NavigationItem[] = [
   },
 ];
 
-export function SiteHeader({ current }: { current?: string }) {
+export function SiteHeader({
+  current,
+  darkAtTop = false,
+}: {
+  current?: string;
+  darkAtTop?: boolean;
+}) {
   const [open, setOpen] = useState(false);
   const [desktopOpen, setDesktopOpen] = useState<string | null>(null);
   const [mobileOpen, setMobileOpen] = useState<string | null>(null);
@@ -118,11 +124,19 @@ export function SiteHeader({ current }: { current?: string }) {
   const menuButtonRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
-    const update = () => setScrolled(window.scrollY > 24);
+    const update = () =>
+      setScrolled(
+        window.scrollY >
+          (darkAtTop ? Math.max(24, window.innerHeight - 200) : 24),
+      );
     update();
     window.addEventListener("scroll", update, { passive: true });
-    return () => window.removeEventListener("scroll", update);
-  }, []);
+    window.addEventListener("resize", update);
+    return () => {
+      window.removeEventListener("scroll", update);
+      window.removeEventListener("resize", update);
+    };
+  }, [darkAtTop]);
 
   useEffect(() => {
     if (!open && !desktopOpen) return;
@@ -161,7 +175,9 @@ export function SiteHeader({ current }: { current?: string }) {
   return (
     <header
       ref={headerRef}
-      className={`site-header${scrolled ? " scrolled" : ""}`}
+      className={`site-header${scrolled ? " scrolled" : ""}${
+        darkAtTop && !scrolled ? " dark-top" : ""
+      }`}
     >
       <Link href="/" aria-label="ActClarity home" onClick={closeNavigation}>
         <span className="brand-lockup">

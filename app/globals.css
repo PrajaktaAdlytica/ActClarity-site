@@ -626,6 +626,331 @@ h3 {
   display: none;
 }
 
+.site-header.dark-top .brand-name,
+.site-header.dark-top .nav-direct,
+.site-header.dark-top .nav-trigger,
+.site-header.dark-top .signin-link,
+.site-header.dark-top .menu-button {
+  color: var(--white);
+}
+
+.site-header.dark-top .brand-mark {
+  filter: brightness(0) invert(1);
+}
+
+.site-header.dark-top .header-cta {
+  background: var(--paper);
+  border-color: var(--paper);
+  color: var(--ink);
+}
+
+.site-header.dark-top .nav-direct::after,
+.site-header.dark-top .nav-trigger::after,
+.site-header.dark-top .signin-link::after {
+  background: var(--powder);
+}
+
+.site-header.dark-top .nav-dropdown,
+.site-header.dark-top .nav-dropdown a {
+  color: var(--ink);
+}
+
+.entry-hero {
+  background: #071411;
+  color: var(--white);
+  height: 100svh;
+  min-height: 46rem;
+  overflow: hidden;
+  position: relative;
+}
+
+.entry-videos,
+.entry-scrim {
+  inset: 0;
+  position: absolute;
+}
+
+.entry-videos video {
+  filter: saturate(0.72) contrast(0.94);
+  height: 100%;
+  inset: 0;
+  object-fit: cover;
+  opacity: 0;
+  position: absolute;
+  transition: opacity 1200ms ease-in-out;
+  width: 100%;
+}
+
+.entry-videos video.active {
+  opacity: 1;
+}
+
+.entry-scrim {
+  background: rgb(3 16 13 / 48%);
+  z-index: 1;
+}
+
+.entry-content {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(4rem, 12vh, 8rem);
+  height: 100%;
+  justify-content: flex-end;
+  margin: 0 auto;
+  max-width: 96rem;
+  padding: 9rem var(--page-padding) 3.5rem;
+  position: relative;
+  z-index: 2;
+}
+
+.entry-control-row,
+.entry-identity-row {
+  display: grid;
+}
+
+.entry-control-row {
+  align-items: end;
+  grid-template-columns: 1fr auto;
+}
+
+.entry-switcher {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.entry-switcher button {
+  align-items: center;
+  background: transparent;
+  border: 0;
+  color: var(--white);
+  cursor: pointer;
+  display: inline-flex;
+  font-family: inherit;
+  font-size: 0.68rem;
+  font-weight: 700;
+  gap: 0.55rem;
+  opacity: 0.48;
+  padding: 0.2rem 0;
+  text-transform: uppercase;
+  transition:
+    opacity 180ms ease,
+    transform 180ms ease;
+}
+
+.entry-switcher button span {
+  font-size: 0.5rem;
+}
+
+.entry-switcher button:hover,
+.entry-switcher button:focus-visible {
+  opacity: 0.8;
+  transform: translateX(0.25rem);
+}
+
+.entry-switcher button.active {
+  opacity: 1;
+}
+
+.entry-switcher button:focus-visible,
+.entry-intro a:focus-visible {
+  outline: 2px solid var(--powder);
+  outline-offset: 4px;
+}
+
+.entry-status {
+  align-items: flex-end;
+  display: flex;
+  flex-direction: column;
+  font-size: 0.6rem;
+  gap: 0.55rem;
+  text-transform: uppercase;
+}
+
+.entry-status > span:first-child {
+  align-items: center;
+  display: flex;
+  gap: 0.6rem;
+}
+
+.entry-status i {
+  animation: entryDotPulse 1.6s ease-in-out infinite;
+  background: var(--powder);
+  border-radius: 50%;
+  box-shadow: 0 0 0.8rem rgb(207 226 250 / 75%);
+  display: block;
+  height: 0.45rem;
+  width: 0.45rem;
+}
+
+.entry-identity-row {
+  align-items: end;
+  gap: clamp(2.5rem, 7vw, 7rem);
+  grid-template-columns: minmax(0, 2fr) minmax(18rem, 1fr);
+}
+
+.entry-identity-row h1 {
+  animation: entryRevealUp 900ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  color: var(--white);
+  font-family: var(--font-source-serif), Georgia, serif;
+  font-size: clamp(5.5rem, 12vw, 11rem);
+  font-weight: 500;
+  line-height: 0.8;
+  margin: 0;
+  white-space: nowrap;
+}
+
+.entry-identity-row h1 span {
+  color: var(--powder);
+}
+
+.entry-intro {
+  animation: entryRevealRight 900ms 80ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  max-width: 26rem;
+}
+
+.entry-intro p {
+  font-size: 0.94rem;
+  font-weight: 500;
+  line-height: 1.6;
+  margin: 0 0 1.6rem;
+}
+
+.entry-intro a {
+  align-items: center;
+  border: 1px solid rgb(255 255 255 / 72%);
+  color: var(--white);
+  display: inline-flex;
+  font-size: 0.68rem;
+  font-weight: 700;
+  gap: 0.65rem;
+  min-height: 3rem;
+  overflow: hidden;
+  padding: 0.75rem 1rem;
+  position: relative;
+  text-transform: uppercase;
+  transition:
+    border-color 220ms ease,
+    color 220ms ease,
+    transform 220ms ease;
+  z-index: 0;
+}
+
+.entry-intro a::before {
+  background: var(--powder);
+  content: "";
+  inset: 0;
+  position: absolute;
+  transform: translateY(101%);
+  transition: transform 320ms cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: -1;
+}
+
+.entry-intro a:hover {
+  border-color: var(--powder);
+  color: var(--ink);
+  transform: translateY(-0.15rem);
+}
+
+.entry-intro a:hover::before {
+  transform: translateY(0);
+}
+
+@keyframes entryRevealUp {
+  from {
+    opacity: 0;
+    transform: translateY(5rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes entryRevealRight {
+  from {
+    opacity: 0;
+    transform: translateX(6rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes entryDotPulse {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.45;
+    transform: scale(1.45);
+  }
+}
+
+@media (max-width: 900px) {
+  .entry-content {
+    gap: 4.5rem;
+    padding: 8rem 1.5rem 3rem;
+  }
+
+  .entry-identity-row {
+    gap: 2.5rem;
+    grid-template-columns: 1.7fr 1fr;
+  }
+
+  .entry-identity-row h1 {
+    font-size: clamp(5rem, 14vw, 8rem);
+  }
+
+}
+
+@media (max-width: 600px) {
+  .entry-hero {
+    min-height: 48rem;
+  }
+
+  .entry-content {
+    align-items: start;
+    gap: 3.25rem;
+    padding: 7.5rem 1.25rem 2.75rem;
+  }
+
+  .entry-control-row,
+  .entry-identity-row {
+    grid-template-columns: 1fr;
+    width: 100%;
+  }
+
+  .entry-control-row {
+    gap: 2rem;
+  }
+
+  .entry-status {
+    align-items: flex-start;
+  }
+
+  .entry-identity-row {
+    gap: 2rem;
+  }
+
+  .entry-identity-row h1 {
+    font-size: clamp(3.25rem, 15vw, 3.8rem);
+    white-space: normal;
+  }
+
+  .entry-intro {
+    max-width: 22rem;
+  }
+
+  .entry-intro p {
+    font-size: 0.84rem;
+  }
+}
+
 .hero {
   background: var(--powder-pale);
   height: min(58rem, 100svh);
