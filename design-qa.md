@@ -87,6 +87,12 @@ fallback.
    canvas. Verified the final collaboration panel, the clean section `07`
    handoff, and isolated section `08` in `qa-wide-chapters-end-fixed.png` and
    `qa-wide-section-08-fixed.png`.
+7. Replaced the four generic AI-system labels in section `02` with distinct
+   governance fragments: a production deployment record, vendor intake,
+   evaluation notebook, and evidence folder. Each now exposes a concrete
+   missing link and uses its own information pattern. Verified at 1997 x 1255
+   and 390 x 844 in `qa-problem-evidence-fragments-wide.png` and
+   `qa-problem-evidence-fragments-mobile.png`.
 
 ## Remaining Differences
 

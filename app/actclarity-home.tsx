@@ -5,12 +5,16 @@ import {
   ArrowUpRight,
   BookOpen,
   Check,
+  ClipboardCheck,
+  Code2,
+  Database,
   FileCheck2,
   FileText,
   GitBranch,
   History,
   Linkedin,
   LockKeyhole,
+  Mail,
   Menu,
   Minus,
   PackageCheck,
@@ -940,26 +944,101 @@ export function ActClarityHome() {
               unclear. Obligations are missed. Evidence is scattered.
             </p>
           </div>
-          <div className="problem-cards" aria-label="Example scattered AI systems">
-            <article className="problem-card card-rag">
-              <span className="record-dot peach" />
-              <strong>RAG Assistant</strong>
-              <small>Owner unclear</small>
+          <div
+            className="problem-cards"
+            aria-label="Disconnected AI governance records"
+          >
+            <article className="problem-card fragment-deployment">
+              <header className="fragment-header">
+                <span className="fragment-icon blue">
+                  <Database size={15} />
+                </span>
+                <span>Deployment record</span>
+                <span className="fragment-badge peach">Production</span>
+              </header>
+              <strong>CV ranking service</strong>
+              <dl className="fragment-fields">
+                <div>
+                  <dt>Owner</dt>
+                  <dd>Unassigned</dd>
+                </div>
+                <div>
+                  <dt>Region</dt>
+                  <dd>EU</dd>
+                </div>
+              </dl>
+              <p className="fragment-alert">
+                <span aria-hidden="true">!</span>
+                No risk decision linked
+              </p>
             </article>
-            <article className="problem-card card-cv">
-              <span className="record-dot blue" />
-              <strong>CV Screening Tool</strong>
-              <small>Third-party model</small>
+
+            <article className="problem-card fragment-vendor">
+              <header className="fragment-header">
+                <span className="fragment-icon peach">
+                  <Mail size={15} />
+                </span>
+                <span>Vendor intake</span>
+                <span className="fragment-badge">External</span>
+              </header>
+              <strong>NeuralHire API</strong>
+              <div
+                className="fragment-progress"
+                aria-label="6 of 14 questions answered"
+              >
+                <span style={{ width: "43%" }} />
+              </div>
+              <footer className="fragment-footer">
+                <span>6 of 14 answered</span>
+                <b>Legal review missing</b>
+              </footer>
             </article>
-            <article className="problem-card card-forecast">
-              <span className="record-dot mint" />
-              <strong>Demand Forecast</strong>
-              <small>Local notebook</small>
+
+            <article className="problem-card fragment-notebook">
+              <header className="fragment-header">
+                <span className="fragment-icon mint">
+                  <Code2 size={15} />
+                </span>
+                <span>Evaluation notebook</span>
+                <span className="fragment-badge butter">Stale</span>
+              </header>
+              <strong>Bias checks / v7</strong>
+              <div className="notebook-metric">
+                <span>Last test run</span>
+                <b>8 months ago</b>
+              </div>
+              <p className="fragment-alert">
+                <span aria-hidden="true">!</span>
+                No model card attached
+              </p>
             </article>
-            <article className="problem-card card-churn">
-              <span className="record-dot butter" />
-              <strong>Churn Model</strong>
-              <small>Marketing team</small>
+
+            <article className="problem-card fragment-folder">
+              <header className="fragment-header">
+                <span className="fragment-icon lilac">
+                  <ClipboardCheck size={15} />
+                </span>
+                <span>Evidence folder</span>
+                <span className="fragment-badge lilac">Draft</span>
+              </header>
+              <strong>AI controls / Q3</strong>
+              <ul className="fragment-checklist">
+                <li>
+                  <Check size={13} />
+                  DPIA.pdf
+                  <small>Current</small>
+                </li>
+                <li className="is-missing">
+                  <Minus size={13} />
+                  Oversight plan
+                  <small>Missing</small>
+                </li>
+                <li className="is-open">
+                  <History size={13} />
+                  Approval email
+                  <small>Unresolved</small>
+                </li>
+              </ul>
             </article>
           </div>
           <p className="trace-note">Trace the hidden ownership paths</p>
