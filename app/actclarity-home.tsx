@@ -701,6 +701,16 @@ export function ActClarityHome() {
           },
         });
 
+        gsap.from(".portfolio-note-copy > *, .portfolio-note-record > *", {
+          y: 24,
+          opacity: 0,
+          stagger: 0.07,
+          scrollTrigger: {
+            trigger: ".portfolio-note",
+            start: "top 82%",
+          },
+        });
+
         const media = gsap.matchMedia();
         media.add("(min-width: 960px)", () => {
           const track = document.querySelector<HTMLElement>(".chapters-track");
@@ -1027,6 +1037,61 @@ export function ActClarityHome() {
           {trustedSectors.map((sector) => (
             <span key={sector}>{sector}</span>
           ))}
+        </div>
+      </section>
+
+      <section className="portfolio-note" aria-labelledby="portfolio-note-title">
+        <div className="portfolio-note-copy">
+          <span className="portfolio-note-eyebrow">Portfolio announcement</span>
+          <h2 id="portfolio-note-title">
+            TipHub announces a $750K allocation to ActClarity.
+          </h2>
+          <p>
+            ActClarity is joining the TipHub portfolio as it builds practical
+            infrastructure for RegTech and AI compliance.
+          </p>
+          <div className="portfolio-note-actions">
+            <a className="button primary" href="/news/tiphub-allocation">
+              Read the announcement
+              <ArrowRight size={16} />
+            </a>
+            <a
+              className="text-link"
+              href="https://tiphub-prototype-review.vercel.app/companies/actclarity"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Visit TipHub
+              <ArrowUpRight size={15} />
+            </a>
+          </div>
+        </div>
+        <div className="portfolio-note-record" aria-label="Announcement summary">
+          <span className="portfolio-note-index">Company record / 01</span>
+          <div className="portfolio-note-allocation">
+            <small>TipHub-announced allocation</small>
+            <strong>$750K</strong>
+          </div>
+          <dl>
+            <div>
+              <dt>Company</dt>
+              <dd>ActClarity</dd>
+            </div>
+            <div>
+              <dt>Sector</dt>
+              <dd>RegTech and AI compliance</dd>
+            </div>
+            <div>
+              <dt>Scope</dt>
+              <dd>Global</dd>
+            </div>
+          </dl>
+        </div>
+        <div className="portfolio-note-linework" aria-hidden="true">
+          <i />
+          <i />
+          <i />
+          <i />
         </div>
       </section>
 
@@ -1612,6 +1677,7 @@ export function ActClarityHome() {
             <div>
               <strong>Company</strong>
               <a href="/company">About</a>
+              <a href="/news/tiphub-allocation">Portfolio announcement</a>
               <a href="/company#careers">Careers</a>
               <a href="/company#privacy">Privacy</a>
               <a href="/company#terms">Terms</a>

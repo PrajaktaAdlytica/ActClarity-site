@@ -96,6 +96,11 @@ const navigation: NavigationItem[] = [
         description: "How we build for consequential work",
       },
       {
+        label: "Portfolio announcement",
+        href: "/news/tiphub-allocation",
+        description: "TipHub-announced $750K allocation",
+      },
+      {
         label: "Careers",
         href: "/company#careers",
         description: "Help build responsible AI infrastructure",

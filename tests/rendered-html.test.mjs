@@ -47,6 +47,13 @@ test("server-renders the complete ActClarity homepage", async () => {
   assert.match(html, /Request demo/);
   assert.match(html, /Supports EU AI Act readiness/);
   assert.match(html, /Built for teams trusted with AI decisions/);
+  assert.match(html, /TipHub announces a \$750K allocation to ActClarity/);
+  assert.match(html, /href="\/news\/tiphub-allocation"/);
+  assert.match(
+    html,
+    /href="https:\/\/tiphub-prototype-review\.vercel\.app\/companies\/actclarity"/,
+  );
+  assert.doesNotMatch(html, /ActClarity (?:has )?raised \$750K/i);
   assert.match(html, /Design-partner perspectives/);
   assert.match(html, /Bring one AI system/);
   assert.match(html, /Product overview/);
@@ -104,6 +111,29 @@ test("server-renders the complete marketing route set", async () => {
   for (const destination of ["careers", "contact", "privacy", "terms"]) {
     assert.match(company, new RegExp(`id="${destination}"`));
   }
+});
+
+test("server-renders the TipHub portfolio announcement accurately", async () => {
+  const response = await render("/news/tiphub-allocation");
+  assert.equal(response.status, 200);
+
+  const html = await response.text();
+  assert.match(html, /<title>ActClarity joins the TipHub portfolio \| ActClarity<\/title>/i);
+  assert.match(html, /Portfolio announcement/i);
+  assert.match(html, /TipHub announces a \$750K allocation to ActClarity/);
+  assert.match(html, /RegTech and AI compliance/);
+  assert.match(html, /TipHub-announced allocation/);
+  assert.match(html, /Early stage/);
+  assert.match(html, /Scope/);
+  assert.match(html, /Global/);
+  assert.match(
+    html,
+    /href="https:\/\/tiphub-prototype-review\.vercel\.app\/companies\/actclarity"/,
+  );
+  assert.match(html, /rel="canonical" href="https:\/\/actclarity\.com\/news\/tiphub-allocation"/);
+  assert.match(html, /does not independently represent the company/);
+  assert.doesNotMatch(html, /ActClarity (?:has )?raised \$750K/i);
+  assert.doesNotMatch(html, /total funding/i);
 });
 
 test("keeps brand assets and finished metadata wired", async () => {

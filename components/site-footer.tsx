@@ -57,6 +57,7 @@ export function SiteFooter() {
           <div>
             <strong>Company</strong>
             <Link href="/company">About</Link>
+            <Link href="/news/tiphub-allocation">Portfolio announcement</Link>
             <Link href="/company#careers">Careers</Link>
             <Link href="/company#privacy">Privacy</Link>
             <Link href="/company#terms">Terms</Link>
