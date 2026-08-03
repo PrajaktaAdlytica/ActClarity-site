@@ -120,6 +120,7 @@ test("server-renders the TipHub portfolio announcement accurately", async () => 
   const html = await response.text();
   assert.match(html, /<title>ActClarity joins the TipHub portfolio \| ActClarity<\/title>/i);
   assert.match(html, /Portfolio announcement/i);
+  assert.match(html, /href="\/news\/tiphub-allocation"[^>]*>Announcement</i);
   assert.match(html, /TipHub announces a \$550K allocation to ActClarity/);
   assert.match(html, /RegTech and AI compliance/);
   assert.match(html, /TipHub-announced allocation/);

@@ -65,7 +65,7 @@ export function TipHubAnnouncementPage() {
       <a className="skip-link" href="#announcement-content">
         Skip to announcement
       </a>
-      <SiteHeader current="company" />
+      <SiteHeader current="announcement" />
 
       <header className="news-hero" id="announcement-content">
         <div className="news-hero-copy">

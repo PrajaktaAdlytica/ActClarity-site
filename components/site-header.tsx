@@ -82,6 +82,7 @@ const navigation: NavigationItem[] = [
   { label: "Security", href: "/security" },
   { label: "Docs", href: "/docs" },
   { label: "Pricing", href: "/pricing" },
+  { label: "Announcement", href: "/news/tiphub-allocation" },
   {
     label: "Company",
     menu: [
