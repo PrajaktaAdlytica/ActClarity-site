@@ -1044,7 +1044,7 @@ export function ActClarityHome() {
         <div className="portfolio-note-copy">
           <span className="portfolio-note-eyebrow">Portfolio announcement</span>
           <h2 id="portfolio-note-title">
-            TipHub announces a $750K allocation to ActClarity.
+            TipHub announces a $550K allocation to ActClarity.
           </h2>
           <p>
             ActClarity is joining the TipHub portfolio as it builds practical
@@ -1070,7 +1070,7 @@ export function ActClarityHome() {
           <span className="portfolio-note-index">Company record / 01</span>
           <div className="portfolio-note-allocation">
             <small>TipHub-announced allocation</small>
-            <strong>$750K</strong>
+            <strong>$550K</strong>
           </div>
           <dl>
             <div>

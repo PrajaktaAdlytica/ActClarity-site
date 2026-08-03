@@ -3,7 +3,7 @@ import { TipHubAnnouncementPage } from "@/components/tiphub-announcement-page";
 
 const title = "ActClarity joins the TipHub portfolio";
 const description =
-  "TipHub announces a $750K portfolio allocation to ActClarity, supporting its work across RegTech and AI compliance.";
+  "TipHub announces a $550K portfolio allocation to ActClarity, supporting its work across RegTech and AI compliance.";
 
 export const metadata: Metadata = {
   title,

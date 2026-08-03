@@ -98,7 +98,7 @@ const navigation: NavigationItem[] = [
       {
         label: "Portfolio announcement",
         href: "/news/tiphub-allocation",
-        description: "TipHub-announced $750K allocation",
+        description: "TipHub-announced $550K allocation",
       },
       {
         label: "Careers",

@@ -12,7 +12,7 @@ const announcementUrl =
 const facts = [
   ["Company", "ActClarity"],
   ["Sector", "RegTech and AI compliance"],
-  ["TipHub-announced allocation", "$750K"],
+  ["TipHub-announced allocation", "$550K"],
   ["Stage", "Early stage"],
   ["Scope", "Global"],
   ["Portfolio", "TipHub"],
@@ -70,9 +70,9 @@ export function TipHubAnnouncementPage() {
       <header className="news-hero" id="announcement-content">
         <div className="news-hero-copy">
           <span className="news-eyebrow">Portfolio announcement</span>
-          <h1>TipHub announces a $750K allocation to ActClarity.</h1>
+          <h1>TipHub announces a $550K allocation to ActClarity.</h1>
           <p>
-            ActClarity is joining the TipHub portfolio following a $750K
+            ActClarity is joining the TipHub portfolio following a $550K
             TipHub-announced allocation. The partnership supports the
             company&apos;s work across RegTech and AI compliance.
           </p>
@@ -81,7 +81,7 @@ export function TipHubAnnouncementPage() {
           <span>Portfolio record / 01</span>
           <div>
             <small>TipHub-announced allocation</small>
-            <strong>$750K</strong>
+            <strong>$550K</strong>
           </div>
           <p>RegTech and AI compliance</p>
         </aside>
