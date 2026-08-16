@@ -100,7 +100,10 @@ export function SiteFooter() {
         </a>
       </div>
       <div className="footer-legal">
-        <span>© 2026 ActClarity. Warsaw, Poland · European Union</span>
+        <span>
+          © 2026 ActClarity. 4658 Summer Boulevard · Nicosia, NIC 1076 ·
+          Cyprus · Phone: 24 894310
+        </span>
         <Link href="/company#privacy">Privacy</Link>
         <Link href="/company#terms">Terms</Link>
         <span>Accessibility</span>

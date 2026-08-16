@@ -182,7 +182,7 @@ function HeroVisual({ kind }: { kind: string }) {
   if (kind === "company") {
     return (
       <div className="page-hero-visual company-field" aria-hidden="true">
-        <span className="field-coordinate">52.2297° N · 21.0122° E</span>
+        <span className="field-coordinate">35.1856° N · 33.3823° E</span>
         <div className="field-stem stem-1">
           <i />
           <i />
@@ -199,7 +199,7 @@ function HeroVisual({ kind }: { kind: string }) {
         </div>
         <div className="field-ground" />
         <div className="field-note">
-          <span>Built in Warsaw</span>
+          <span>Built in Nicosia</span>
           <strong>For teams governing AI across Europe.</strong>
         </div>
       </div>
@@ -330,7 +330,7 @@ function MiniVisual({ kind }: { kind: VisualKind }) {
   if (kind === "map") {
     return (
       <div className="mini-visual mini-map" aria-hidden="true">
-        <span>Warsaw</span>
+        <span>Nicosia</span>
         <span>Berlin</span>
         <span>Paris</span>
         <span>Amsterdam</span>
