@@ -1726,8 +1726,8 @@ export function ActClarityHome() {
         </div>
         <div className="footer-legal">
           <span>
-            © 2026 ActClarity. Mayme Klassen · 8730 Watson Rd, Saint Louis,
-            MO 63119, USA · Phone: 3148092030
+            © 2026 ActClarity. 8730 Watson Rd, Saint Louis, MO 63119, USA
+            · Phone: 3148092030
           </span>
           <span id="privacy">Privacy</span>
           <span id="terms">Terms</span>
