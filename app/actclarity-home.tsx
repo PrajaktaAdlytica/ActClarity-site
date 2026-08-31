@@ -1012,7 +1012,7 @@ export function ActClarityHome() {
               <ShieldCheck size={14} />
               Supports EU AI Act readiness
             </span>
-            <span>Built for European teams</span>
+            <span>Built for U.S. and global teams</span>
           </div>
         </div>
         <div className="hero-annotations" aria-hidden="true">
@@ -1441,7 +1441,7 @@ export function ActClarityHome() {
           </h2>
           <p>
             The product direction is shaped around recurring needs from
-            European legal, risk, product, and governance teams.
+            U.S., EU, and global legal, risk, product, and governance teams.
           </p>
         </div>
         <div className="continuity-rail" aria-hidden="true">

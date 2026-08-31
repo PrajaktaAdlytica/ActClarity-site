@@ -200,7 +200,7 @@ function HeroVisual({ kind }: { kind: string }) {
         <div className="field-ground" />
         <div className="field-note">
           <span>Built in Saint Louis</span>
-          <strong>For teams governing AI across Europe.</strong>
+          <strong>For teams governing AI in the U.S. and globally.</strong>
         </div>
       </div>
     );
@@ -501,7 +501,7 @@ export function MarketingPage({ config }: { config: MarketingPageConfig }) {
           </div>
           <span className="page-hero-note">
             <ShieldCheck size={14} />
-            Built for European AI governance teams
+            Built for U.S. and global AI governance teams
           </span>
         </div>
         <HeroVisual kind={config.variant} />
