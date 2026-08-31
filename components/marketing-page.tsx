@@ -199,7 +199,7 @@ function HeroVisual({ kind }: { kind: string }) {
         </div>
         <div className="field-ground" />
         <div className="field-note">
-          <span>Built in Nicosia</span>
+          <span>Built in Saint Louis</span>
           <strong>For teams governing AI across Europe.</strong>
         </div>
       </div>
@@ -330,7 +330,7 @@ function MiniVisual({ kind }: { kind: VisualKind }) {
   if (kind === "map") {
     return (
       <div className="mini-visual mini-map" aria-hidden="true">
-        <span>Nicosia</span>
+        <span>Saint Louis</span>
         <span>Berlin</span>
         <span>Paris</span>
         <span>Amsterdam</span>

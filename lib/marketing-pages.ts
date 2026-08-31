@@ -435,11 +435,11 @@ export const companyPage: MarketingPageConfig = {
   eyebrow: "Company",
   title: "Building the operating layer for responsible AI in Europe.",
   intro:
-    "ActClarity is a Cyprus-based European product company helping organisations turn AI governance policy into clear, connected, reviewable work.",
+    "ActClarity is a Missouri-based European product company helping organisations turn AI governance policy into clear, connected, reviewable work.",
   primary: "Meet ActClarity",
   secondary: "Our principles",
   proof: [
-    { value: "Nicosia", label: "Built in Cyprus for the European market" },
+    { value: "Saint Louis", label: "Built in Missouri for the European market" },
     { value: "Focused", label: "AI inventory, classification, and evidence" },
     { value: "Practical", label: "Designed around accountable team workflows" },
   ],
@@ -475,7 +475,7 @@ export const companyPage: MarketingPageConfig = {
       title: "Design around the organisations implementing the EU AI Act.",
       body:
         "Start with the legal, product, risk, security, and procurement realities of European companies.",
-      detail: "Cyprus · European Union · regulated teams",
+      detail: "United States · European Union · regulated teams",
       visual: "map",
     },
   ],

@@ -602,18 +602,18 @@ export function ActClarityHome() {
   const [openFaq, setOpenFaq] = useState<number | null>(0);
   const [activeProductTab, setActiveProductTab] = useState("Inventory");
   const [activeEntryScene, setActiveEntryScene] = useState(0);
-  const [nicosiaTime, setNicosiaTime] = useState("--:--:--");
+  const [saintLouisTime, setSaintLouisTime] = useState("--:--:--");
   const [newsletterSubmitted, setNewsletterSubmitted] = useState(false);
 
   useEffect(() => {
     const formatter = new Intl.DateTimeFormat("en-GB", {
-      timeZone: "Asia/Nicosia",
+      timeZone: "America/Chicago",
       hour: "2-digit",
       minute: "2-digit",
       second: "2-digit",
       hour12: false,
     });
-    const update = () => setNicosiaTime(formatter.format(new Date()));
+    const update = () => setSaintLouisTime(formatter.format(new Date()));
     update();
     const timer = window.setInterval(update, 1000);
     return () => window.clearInterval(timer);
@@ -960,7 +960,7 @@ export function ActClarityHome() {
                 <i aria-hidden="true" />
                 EU AI Act workspace
               </span>
-              <span>Nicosia {nicosiaTime}</span>
+                <span>Saint Louis {saintLouisTime}</span>
             </div>
           </div>
           <div className="entry-identity-row">
@@ -1031,7 +1031,7 @@ export function ActClarityHome() {
         <div className="trusted-strip-copy">
           <span className="trusted-pulse" aria-hidden="true" />
           <p id="trusted-heading">Built for teams trusted with AI decisions</p>
-          <small>Early-access programme · Cyprus and the European Union</small>
+          <small>Early-access programme · United States and the European Union</small>
         </div>
         <div className="sector-list" aria-label="Industries ActClarity supports">
           {trustedSectors.map((sector) => (
@@ -1726,8 +1726,8 @@ export function ActClarityHome() {
         </div>
         <div className="footer-legal">
           <span>
-            © 2026 ActClarity. 4658 Summer Boulevard · Nicosia, NIC 1076 ·
-            Cyprus · Phone: 24 894310
+            © 2026 ActClarity. Mayme Klassen · 8730 Watson Rd, Saint Louis,
+            MO 63119, USA · Phone: 3148092030
           </span>
           <span id="privacy">Privacy</span>
           <span id="terms">Terms</span>

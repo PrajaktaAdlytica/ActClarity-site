@@ -101,8 +101,8 @@ export function SiteFooter() {
       </div>
       <div className="footer-legal">
         <span>
-          © 2026 ActClarity. 4658 Summer Boulevard · Nicosia, NIC 1076 ·
-          Cyprus · Phone: 24 894310
+          © 2026 ActClarity. Mayme Klassen · 8730 Watson Rd, Saint Louis, MO
+          63119, USA · Phone: 3148092030
         </span>
         <Link href="/company#privacy">Privacy</Link>
         <Link href="/company#terms">Terms</Link>
