@@ -625,8 +625,9 @@ export function MarketingPage({ config }: { config: MarketingPageConfig }) {
             <span>04 / Terms</span>
             <h2>Clear scope, careful claims, accountable decisions.</h2>
             <p>
-              ActClarity supports governance and documentation workflows. It
-              does not replace legal advice or conformity assessment.
+              ActClarity supports governance and documentation workflows that
+              keep decisions, obligations, and evidence in one reviewable
+              workspace.
             </p>
             <a href="mailto:legal@actclarity.com">
               Terms enquiries

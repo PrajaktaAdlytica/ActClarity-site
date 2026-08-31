@@ -108,11 +108,6 @@ export function SiteFooter() {
         <Link href="/company#terms">Terms</Link>
         <span>Accessibility</span>
       </div>
-      <p className="legal-disclaimer">
-        ActClarity provides governance and documentation tooling, not legal
-        advice, conformity assessment, certification, or a guarantee of
-        compliance. Product records shown on this site are illustrative.
-      </p>
     </footer>
   );
 }

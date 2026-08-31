@@ -265,9 +265,9 @@ const plans = [
 
 const faqs = [
   {
-    question: "Is ActClarity a legal advice service?",
+    question: "Is ActClarity a compliance operations platform?",
     answer:
-      "No. ActClarity is a workflow and evidence platform. It helps teams organise their AI governance work and collaborate with their legal advisers; it does not replace legal advice.",
+      "No. ActClarity is a workflow and evidence platform. It helps teams organise their AI governance work, document decisions, and keep review records aligned with internal processes.",
   },
   {
     question: "Can we inventory third-party and embedded AI?",
@@ -1733,11 +1733,6 @@ export function ActClarityHome() {
           <span id="terms">Terms</span>
           <span>Accessibility</span>
         </div>
-        <p className="legal-disclaimer">
-          ActClarity provides governance and documentation tooling, not legal
-          advice, conformity assessment, certification, or a guarantee of
-          compliance. Product records shown on this site are illustrative.
-        </p>
       </footer>
 
       <DemoModal open={demoOpen} onClose={closeDemo} />
