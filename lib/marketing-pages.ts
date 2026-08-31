@@ -498,8 +498,8 @@ export const companyPage: MarketingPageConfig = {
       icon: "roles",
     },
     {
-      title: "European",
-      body: "Stay grounded in the regulatory and operating context of the EU.",
+      title: "Global",
+      body: "Stay grounded in the regulatory and operating context of global AI governance.",
       icon: "docs",
     },
   ],
